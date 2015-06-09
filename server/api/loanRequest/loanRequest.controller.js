@@ -31,8 +31,12 @@ exports.create = function(req, res) {
     if(err) { return handleError(res, err); }
     
     
+    var phoneNumber = req.body.phoneNumber;
+    
+    console.log(phoneNumber);
+    
     client.messages.create({
-    to:'+447703587869',
+    to:phoneNumber,
     from:'+441143031520',
     body:'Your unique sms link to send your loan documents www.driverloan.co.uk/u'
 }, function(error, message) {
