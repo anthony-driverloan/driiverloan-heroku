@@ -5,25 +5,26 @@ var Schema = mongoose.Schema;
 var crypto = require('crypto');
 
 var UserSchema = new Schema({
+  title: { type: String, required: true, lowercase: true },
   fName: { type: String, required: true, lowercase: true },
-  mName: { type: String, lowercase: true },
+  mInitials: { type: String, lowercase: true },
   lName: { type: String, required: true },
   dobDay: { type:Number, required: true },
   dobMonth: { type:Number, required: true },
   dobYear: { type:Number, required: true },
+  mobileNumber: {type:String, required:true},
   email: { type: String, lowercase: true, required: true },
   currentAddressLineOne: { type: String, required: true, lowercase: true },
   currentAddressLineTwo: { type: String, lowercase: true },
   currentAddressTown: { type: String, required: true, lowercase: true },
   currentAddressCounty: { type: String, lowercase: true },
   currentAddressPostcode: { type: String, required: true, lowercase: true },
+  residenceStatus: { type: String, required: true, lowercase: true },
   previousAddressLineOne: { type: String, lowercase: true },
   previousAddressLineTwo: { type: String, lowercase: true },
   previousAddressTown: { type: String, lowercase: true },
   previousAddressCounty: { type: String, lowercase: true },
   previousAddressPostcode: { type: String, lowercase: true },
-  ni: { type: String, lowercase: true },
-  mobileNumber: {type:String, required:true},
   workNumber: { type: String, lowercase: true },
   homeNumber: { type: String, lowercase: true },
   role: {
@@ -79,7 +80,7 @@ UserSchema
   .validate(function(email) {
     return email.length;
   }, 'Email cannot be blank');
-
+  
 // Validate empty password
 UserSchema
   .path('hashedPassword')
